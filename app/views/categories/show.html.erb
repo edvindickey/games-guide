@@ -1,2 +1,5 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<% if @guides == [] %>
+  <p>НЕ знайдено жодного запису</p>
+<% else %>
+  <%=render @guides%>
+<% end %>
