@@ -1,6 +1,7 @@
 class GuidesController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
   before_action :find_guide, only: %i[show edit update]
+
   def new
     @guide = Guide.new
     @categories = Category.all
@@ -37,10 +38,11 @@ class GuidesController < ApplicationController
   private
 
   def guide_params
-    params.require(:guide).permit(:user_id, :title, :hero, :text)
+    params.require(:guide).permit(:user_id, :title, :hero, :text, pictures:[])
   end
 
   def find_guide
     @guide = Guide.find(params[:id])
   end
+
 end

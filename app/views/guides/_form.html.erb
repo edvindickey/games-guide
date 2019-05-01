@@ -9,7 +9,7 @@
 			<%= f.label x.name%>
 		</p>
 	<%end%>
-  
+
 <div class="field">
   <%= f.text_field :hero, class:"input", placeholder:"hero" %><br>
 </div>
@@ -17,3 +17,7 @@
 <div class="field">
   <%= f.text_field :text, class:"input", placeholder:"text" %><br>
 </div>
+
+<h3>Виберіть фото:</h3>
+
+<%= f.file_field :pictures, multiple: true %>
