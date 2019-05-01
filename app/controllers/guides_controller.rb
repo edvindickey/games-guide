@@ -27,7 +27,9 @@ class GuidesController < ApplicationController
 
   def show; end
 
-  def index; end
+  def index
+    @guides = Guide.all
+  end
 
   private
 
