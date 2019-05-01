@@ -1,5 +1,11 @@
 <%= @guide.title %>
 
+<% @guide.categories.each do |x|%>
+
+<%= x.name %>
+
+<% end %>
+
 <br>
 
 <%= @guide.hero %>

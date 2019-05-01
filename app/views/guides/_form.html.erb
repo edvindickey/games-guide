@@ -1,6 +1,15 @@
 <div class="field">
   <%= f.text_field :title, class:"input", placeholder:"title" %><br>
 </div>
+<p><%=f.label :category%><br/>
+
+	<%@categories.each do |x|%>
+		<p>
+			<%= check_box_tag 'category_ids[]' , x.id%>
+			<%= f.label x.name%>
+		</p>
+	<%end%>
+  
 <div class="field">
   <%= f.text_field :hero, class:"input", placeholder:"hero" %><br>
 </div>

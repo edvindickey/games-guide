@@ -3,11 +3,14 @@ class GuidesController < ApplicationController
   before_action :find_guide, only: %i[show edit update]
   def new
     @guide = Guide.new
+    @categories = Category.all
   end
 
   def create
+   @categories=Category.find(params[:category_ids])
     @guide = current_user.guides.build(guide_params)
     if @guide.save
+      @guide.categories = @categories
       redirect_to guide_path(@guide.id)
     else
       render 'new'
