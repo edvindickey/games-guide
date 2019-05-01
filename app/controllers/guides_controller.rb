@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
-  before_action :authenticate_user!, except: [:show,:index]
-
+  before_action :authenticate_user!, except: %i[show index]
+  before_action :find_guide, only: %i[show edit update]
   def new
     @guide = Guide.new
   end
@@ -14,19 +14,23 @@ class GuidesController < ApplicationController
     end
   end
 
-  def edit
+  def edit; end
+
+  def update
+    redirect_to guide_path(@guide.id) if @guide.update(guide_params)
   end
 
-  def show
-    @guide = Guide.find(params[:id])
-  end
+  def show; end
 
-  def index
-  end
+  def index; end
 
   private
 
   def guide_params
     params.require(:guide).permit(:user_id, :title, :hero, :text)
+  end
+
+  def find_guide
+    @guide = Guide.find(params[:id])
   end
 end
