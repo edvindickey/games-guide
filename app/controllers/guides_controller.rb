@@ -20,6 +20,11 @@ class GuidesController < ApplicationController
     redirect_to guide_path(@guide.id) if @guide.update(guide_params)
   end
 
+  def destroy
+    @guide.destroy
+    redirect_to guides_path
+  end
+
   def show; end
 
   def index; end
