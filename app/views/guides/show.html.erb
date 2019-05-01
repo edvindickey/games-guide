@@ -13,3 +13,21 @@
 <br>
 
 <%= @guide.text %>
+
+<!-- create comment -->
+
+<%= form_for :comment, url:comments_path do |f| %>
+<%= render 'comments/comment', f:f%>
+<%= f.hidden_field :object_type, value: @guide.class.name%>
+<%= f.hidden_field :object_id, value: @guide.id%>
+<%= f.submit "Create" %>
+<% end %>
+
+
+<!-- show all comments -->
+
+<% Comment.where(object: @guide).each do |comment| %>
+<br>User:
+<%= comment.user.email.split('@').first %><br>
+<%= comment.text%><hr>
+<%end%>
