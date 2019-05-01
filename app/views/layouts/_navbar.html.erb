@@ -1,0 +1,17 @@
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+<%= link_to "Root", root_path %>
+<% if user_signed_in? %>
+
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+<% else %>
+
+  <%= link_to "Login", new_user_session_path %>
+  <%= link_to "Registration", new_user_registration_path %>
+
+<% end %>
+Games
+<% Category.all.each do |x|%>
+  |<%=link_to x.name , category_path(x.name)%>
+<%end%>
