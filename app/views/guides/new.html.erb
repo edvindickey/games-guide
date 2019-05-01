@@ -1,2 +1,4 @@
-<h1>Guides#new</h1>
-<p>Find me in app/views/guides/new.html.erb</p>
+<%= form_with(model: @guide, local: true) do |f| %>
+<%= render 'guides/form', f:f%>
+<%= f.submit "Створити" %>
+<% end %>
