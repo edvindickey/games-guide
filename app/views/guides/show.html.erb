@@ -1,17 +1,17 @@
-<%= @guide.title %>
+Title:<br><%= @guide.title %>
 
-<% @guide.categories.each do |x|%>
+Games:<br> <% @guide.categories.each do |x|%>
 
 <%= x.name %>
 
 <% end %>
 
 <br>
-
+Hero: <br>
 <%= @guide.hero %>
 
 <br>
-
+Text: <br>
 <%= @guide.text %>
 
 

@@ -5,5 +5,4 @@ class Guide < ApplicationRecord
 
   mount_uploaders :pictures, PictureUploader
   serialize :pictures, JSON
-
 end

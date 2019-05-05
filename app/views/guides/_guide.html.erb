@@ -1,9 +1,13 @@
-<%= guide.title %>
+Title: <br><%= guide.title %>
 
 <br>
 
+Hero:<br>
 <%= guide.hero %>
 
 <br>
-
+Text:<br>
 <%= guide.text %>
+
+<%= link_to "More", guide_path(guide.id)%>
+<hr>

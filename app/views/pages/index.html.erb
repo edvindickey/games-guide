@@ -1,2 +1,12 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<%= search_form_for @q, url: root_path do |k| %>
+              <%= k.label :find%>
+              <%= k.search_field :title_or_hero_cont %>
+              <%= k.submit :search %>
+<% end %>
+
+<% if @guides == []%>
+not found
+
+<% else %>
+<%= render @guides%>
+<% end %>
