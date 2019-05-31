@@ -1,16 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="collapse navbar-collapse" id="navbar1">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Home", root_path, class:"navbar-brand" %>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Games</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <% Category.all.each do |x|%>
+            <%= link_to x.name , category_path(x.name), class:"dropdown-item"%>
+          <%end%>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to new_guide_path, class:"nav-link" do %>
+          <i class="fa fa-plus"></i>
+        <% end%>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign-out", destroy_user_session_path,method: :delete, class:"nav-link"%>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class:"nav-link" %>
+      </li>
 
-<%= link_to "Root", root_path %>
-<% if user_signed_in? %>
-
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-
-<% else %>
-
-  <%= link_to "Login", new_user_session_path %>
-  <%= link_to "Registration", new_user_registration_path %>
-
-<% end %>
-Games
-<% Category.all.each do |x|%>
-  |<%=link_to x.name , category_path(x.name)%>
-<%end%>
+      <li class="nav-item">
+        <%= link_to "Registration", new_user_registration_path , class:"nav-link"%>
+      </li>
+    <% end %>
+  </ul>
+</div>
+</nav>
