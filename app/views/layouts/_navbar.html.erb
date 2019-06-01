@@ -12,7 +12,11 @@
           <%end%>
         </div>
       </li>
+      <li class="nav-item active">
+        <%= link_to "News", articles_path, class:"nav-link" %>
+      </li>
     </ul>
+
     <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
@@ -29,14 +33,24 @@
           <%= link_to "Setting", edit_user_registration_path, class:"dropdown-item"%>
         </div>
       </li>
-    <% else %>
       <li class="nav-item">
-        <%= link_to "Login", new_user_session_path, class:"nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Registration", new_user_registration_path , class:"nav-link"%>
-      </li>
-    <% end %>
-  </ul>
+        <%= link_to search_index_path, class:"nav-link" do %>
+        <i class="fa fa-search"></i>
+      <%end%>
+    </li>
+  <% else %>
+    <li class="nav-item">
+      <%= link_to "Login", new_user_session_path, class:"nav-link" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "Registration", new_user_registration_path , class:"nav-link"%>
+    </li>
+    <li class="nav-item">
+      <%= link_to search_index_path, class:"nav-link" do %>
+      <i class="fa fa-search"></i>
+    <%end%>
+  </li>
+<% end %>
+</ul>
 </div>
 </nav>
