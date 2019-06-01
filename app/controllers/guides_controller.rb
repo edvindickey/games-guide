@@ -18,7 +18,9 @@ class GuidesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @categories = Category.all
+ end
 
   def update
     redirect_to guide_path(@guide.id) if @guide.update(guide_params)
