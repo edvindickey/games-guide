@@ -1,0 +1,9 @@
+Title:
+<br><%= article.title %>
+Body:
+<br><%= article.body %>
+<% article.pictures.last(1).each do |x|%>
+<%= image_tag x.url, style:"width:500px;"%>
+<%end%>
+<%= link_to "More", article_path(article.id)%>
+<hr>

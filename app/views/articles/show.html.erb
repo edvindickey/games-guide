@@ -1,0 +1,23 @@
+Title:<br><%= @article.title %>
+
+Body:<br><%= @article.body %>
+<% @article.pictures.each do |photo| %>
+  <%= image_tag(photo.url, style: "width: 1000px;") %><br>
+<% end %>
+
+<!-- create comment -->
+
+<%= form_for :comment, url:comments_path do |f| %>
+<%= render 'comments/comment', f:f%>
+<%= f.hidden_field :object_type, value: @article.class.name%>
+<%= f.hidden_field :object_id, value: @article.id%>
+<%= f.submit "Create" %>
+<% end %>
+
+<!-- show all comments -->
+
+<% Comment.where(object: @article).each do |comment| %>
+<br>User:
+<%= comment.user.email.split('@').first %><br>
+<%= comment.text%><hr>
+<%end%>
