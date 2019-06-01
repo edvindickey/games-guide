@@ -14,7 +14,6 @@ Hero: <br>
 Text: <br>
 <%= @guide.text %>
 
-
 <% @guide.pictures.each do |photo| %>
   <%= image_tag(photo.url, style: "width: 1000px;") %><br>
 <% end %>
