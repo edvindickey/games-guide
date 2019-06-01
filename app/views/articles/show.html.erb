@@ -1,8 +1,9 @@
+<div class="custom-form">
 Title:<br><%= @article.title %>
 
 Body:<br><%= @article.body %>
 <% @article.pictures.each do |photo| %>
-  <%= image_tag(photo.url, style: "width: 1000px;") %><br>
+  <%= image_tag(photo.url, style: "width: 630px;") %><br>
 <% end %>
 
 <!-- create comment -->
@@ -11,7 +12,7 @@ Body:<br><%= @article.body %>
 <%= render 'comments/comment', f:f%>
 <%= f.hidden_field :object_type, value: @article.class.name%>
 <%= f.hidden_field :object_id, value: @article.id%>
-<%= f.submit "Create" %>
+<%= f.submit "Add", class:"btn btn-dark" %>
 <% end %>
 
 <!-- show all comments -->
@@ -21,3 +22,4 @@ Body:<br><%= @article.body %>
 <%= comment.user.email.split('@').first %><br>
 <%= comment.text%><hr>
 <%end%>
+</div>

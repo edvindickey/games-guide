@@ -1,37 +1,66 @@
-Title:<br><%= @guide.title %>
+<div class="custom-form">
+  Title:<br><%= @guide.title %>
 
-Games:<br> <% @guide.categories.each do |x|%>
+  Games:<br>
+  <% @guide.categories.each do |x|%>
 
-<%= x.name %>
+    <%= x.name %>
 
+  <% end %>
+
+  <br>
+  Hero:
+  <br>
+  <%= @guide.hero %>
+
+  <br>
+  Text:
+  <br>
+  <%= @guide.text %>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <% if @guide.pictures.length != 0 %>
+        <% @guide.pictures.each do |x| %>
+          <li data-target="#carouselExampleIndicators" data-slide-to="<%= x %>" class="<%= x == 0 ? 'active' : '' %>">
+          <% end %>
+
+        <% end %>
+    </ol>
+    <div class="carousel-inner">
+      <% @guide.pictures.each_with_index do |image, index| %>
+        <div class="<%=  index == 0 ? 'carousel-item active' : 'carousel-item' %>">
+          <%= image_tag image.url, class:"d-block w-100"%>
+        </div>
+      <% end %>
+    </div>
+    <% if @guide.pictures.length != 0  %>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    <%end%>
+
+  </div>
+
+  <!-- create comment -->
+
+  <%= form_for :comment, url:comments_path do |f| %>
+  <%= render 'comments/comment', f:f%>
+  <%= f.hidden_field :object_type, value: @guide.class.name%>
+  <%= f.hidden_field :object_id, value: @guide.id%>
+  <%= f.submit "Add", class:"btn btn-dark" %>
 <% end %>
-
-<br>
-Hero: <br>
-<%= @guide.hero %>
-
-<br>
-Text: <br>
-<%= @guide.text %>
-
-<% @guide.pictures.each do |photo| %>
-  <%= image_tag(photo.url, style: "width: 1000px;") %><br>
-<% end %>
-
-<!-- create comment -->
-
-<%= form_for :comment, url:comments_path do |f| %>
-<%= render 'comments/comment', f:f%>
-<%= f.hidden_field :object_type, value: @guide.class.name%>
-<%= f.hidden_field :object_id, value: @guide.id%>
-<%= f.submit "Create" %>
-<% end %>
-
 
 <!-- show all comments -->
 
 <% Comment.where(object: @guide).each do |comment| %>
-<br>User:
-<%= comment.user.email.split('@').first %><br>
-<%= comment.text%><hr>
+  <br>User:
+  <%= comment.user.email.split('@').first %><br>
+  <%= comment.text%><hr>
 <%end%>
+</div>
