@@ -11,8 +11,8 @@
 <% end %>
 </div>
 <br>
-<% if @guides == [] %>
-<br>Nothing
-<% else %>
-<%= render @guides%>
-<% end %>
+<div class='album'>
+<div class='container'>
+  <%= render 'guides/guides_list', guides: @guides %>
+</div>
+</div>
