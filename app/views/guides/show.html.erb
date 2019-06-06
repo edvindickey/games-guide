@@ -4,11 +4,10 @@
       <div class='col-md-6 text-center mb-sm-5'>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <% if @guide.pictures.length != 0 %>
+            <% if @guide.pictures.length > 1 %>
               <% @guide.pictures.each do |x| %>
                 <li data-target="#carouselExampleIndicators" data-slide-to="<%= x %>" class="<%= x == 0 ? 'active' : '' %>">
                 <% end %>
-
               <% end %>
           </ol>
           <div class="carousel-inner">
@@ -18,7 +17,7 @@
               </div>
             <% end %>
           </div>
-          <% if @guide.pictures.length != 0  %>
+          <% if @guide.pictures.length > 1  %>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
