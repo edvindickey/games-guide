@@ -31,7 +31,9 @@ class GuidesController < ApplicationController
     redirect_to guides_path
   end
 
-  def show; end
+  def show
+    @recommended_guides = Guide.random.limit(6)
+   end
 
   def index
     @guides = Guide.all
