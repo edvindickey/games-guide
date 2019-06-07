@@ -3,6 +3,10 @@ class Article < ApplicationRecord
   has_and_belongs_to_many :categories
   has_many :comments
   scope :random, -> {order('random()')}
+  
+  validates :title, presence: true
+  validates :body, presence: true
+  validates :pictures, presence: true
 
   mount_uploaders :pictures, PictureUploader
   serialize :pictures, JSON

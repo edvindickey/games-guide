@@ -4,6 +4,11 @@ class Guide < ApplicationRecord
   has_many :comments
   scope :random, -> { order('random()') }
 
+  validates :title, presence: true
+  validates :hero, presence: true
+  validates :text, presence: true
+  validates :pictures, presence: true
+
   mount_uploaders :pictures, PictureUploader
   serialize :pictures, JSON
 end

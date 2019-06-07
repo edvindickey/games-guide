@@ -1,3 +1,15 @@
+<% if @guide.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h2>У нас
+      <%= pluralize(@guide.errors.count, "error") %>(проблєми), Джоні</h2>
+
+    <ul>
+      <% @guide.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= tinymce %>
 <div class="form-group">
   <%= f.text_field :title, class:"input", placeholder:"title",class:"form-control" %><br>
