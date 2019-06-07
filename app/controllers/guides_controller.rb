@@ -8,7 +8,7 @@ class GuidesController < ApplicationController
   end
 
   def create
-   @categories=Category.find(params[:category_ids])
+    @categories=Category.find(params[:category_ids])
     @guide = current_user.guides.build(guide_params)
     if @guide.save
       @guide.categories = @categories

@@ -5,7 +5,11 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     redirect_back(fallback_location: root_path) if @comment.save
-   end
+  end
+
+  def destroy
+    redirect_back(fallback_location: root_path) if @comment.destroy
+  end
 
   private
 

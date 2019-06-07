@@ -2,6 +2,7 @@ class Guide < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :categories
   has_many :comments
+  
   scope :random, -> { order('random()') }
 
   validates :title, presence: true
