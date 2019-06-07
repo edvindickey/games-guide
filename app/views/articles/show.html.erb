@@ -43,28 +43,20 @@
 
     </div>
     <div class='mb-sm-5'>
-      <%= satanize @article.body %>
+      <%= sanitize @article.body %>
     </div>
     <div class='mb-sm-3'>
       <h4>Similar News</h4>
     </div>
         <%= render 'articles/articles_list', articles: @recommended_articles %>
   </div>
+  Add comment <a href="#" data-toggle="modal" data-target="#new_comment_to_<%=@article.class.name.downcase%>_<%=@article.id%>">
+    <span class="fa fa-comment"></span>
+  </a>
+  <%= render 'comments/form', object:@article%>
+<ul class="list-group">
+  <% Comment.where(object: @article).each do |comment| %>
+    <%=render 'comments/comment', comment:comment %>
+  <%end%>
+</ul>
 </div>
-
-<!-- create comment -->
-
-<%= form_for :comment, url:comments_path do |f| %>
-<%= render 'comments/comment', f:f%>
-<%= f.hidden_field :object_type, value: @article.class.name%>
-<%= f.hidden_field :object_id, value: @article.id%>
-<%= f.submit "Add", class:"btn btn-dark" %>
-<% end %>
-
-<!-- show all comments -->
-
-<% Comment.where(object: @article).each do |comment| %>
-<br>User:
-<%= comment.user.email.split('@').first %><br>
-<%= comment.text%><hr>
-<%end%>
