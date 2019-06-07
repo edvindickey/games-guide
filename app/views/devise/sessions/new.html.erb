@@ -1,0 +1,19 @@
+<div class="right-login">
+	<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login-form"}) do |f| %>
+	<div class="field wrap-inputDevise">
+		<%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class:"inputDevise" %>
+	</div>
+	<div class="field wrap-inputDevise">
+		<%= f.password_field :password, autocomplete: "current-password",placeholder: "password", class:"inputDevise" %>
+	</div>
+	<% if devise_mapping.rememberable? %>
+		<%= f.check_box :remember_me %>
+		Remember me
+	<% end %>
+	<div class="actions container-login-btn">
+		<%= f.submit t('.sign_in'), class:"login-btn" %>
+	</div>
+	<%= render "devise/shared/links" %>
+<%end%>
+<div class="login-background" style="background-image: url(/assets/logo-back.jpg);"></div>
+</div>

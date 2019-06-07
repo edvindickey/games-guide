@@ -1,0 +1,9 @@
+<% guides.each_slice(4) do | guides_group | %>
+  <div class='row'>
+    <% guides_group.each do |guide| %>
+      <div class='col-sm-6 col-xs-12'>
+        <%= render 'guides/guide', guide: guide %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

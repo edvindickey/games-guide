@@ -1,0 +1,34 @@
+<% if @guide.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <h2>У нас
+      <%= pluralize(@guide.errors.count, "error") %>(проблєми), Джоні</h2>
+
+    <ul>
+      <% @guide.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= tinymce %>
+<div class="form-group">
+  <%= f.text_field :title, class:"input", placeholder:"title",class:"form-control" %><br>
+</div>
+<div class="form-check">
+<%=f.label :game%>:
+<%@categories.each do |x|%>
+  <%= radio_button_tag 'category_ids[]', x.id %>
+  <%= label_tag(x.name) %>
+<%end%>
+</div>
+<div class="form-group">
+  <%= f.text_field :hero, class:"input", placeholder:"hero",class:"form-control" %><br>
+</div>
+
+<div class="form-group">
+  <%= f.text_area :text,:class => "tinymce", :rows => 10, :cols => 40 %><br>
+</div>
+
+<h3>Виберіть фото:</h3>
+
+<%= f.file_field :pictures, multiple: true %>

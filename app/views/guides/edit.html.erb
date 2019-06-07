@@ -1,0 +1,6 @@
+<div class="custom-form">
+<%=form_for @guide, url:guide_path(@guide.id) do |f|%>
+<%=render 'guides/form', f:f%>
+<%=f.submit "Update"%>
+<%end%>
+</div>

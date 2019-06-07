@@ -1,0 +1,6 @@
+<div class="custom-form">
+<%= form_with(model: @guide, local: true) do |f| %>
+<%= render 'guides/form', f:f%>
+<%= f.submit "Створити", class:"btn btn-dark" %>
+<% end %>
+</div>

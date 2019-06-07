@@ -1,0 +1,6 @@
+<div class="custom-form">
+<%=form_for @article, url:article_path(@article.id) do |f|%>
+<%=render 'articles/form', f:f%>
+<%=f.submit "Update"%>
+<%end%>
+</div>

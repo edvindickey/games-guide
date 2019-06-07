@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to "GamesGuide", root_path, class:"navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar1">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Games</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+          <% Category.all.each do |x|%>
+            <%= link_to x.name , category_path(x.name), class:"dropdown-item"%>
+          <%end%>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "News", articles_path, class:"nav-link" %>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown">
+            <i class="fa fa-plus"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
+            <%= link_to "Guide", new_guide_path, class:"dropdown-item"%>
+            <%= link_to "News", new_article_path, class:"dropdown-item"%>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown1" role="button" data-toggle="dropdown">
+            <%=current_user.email.split('@').first%>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown1">
+            <%= link_to "Sign-out", destroy_user_session_path,method: :delete, class:"dropdown-item"%>
+            <%= link_to "Setting", edit_user_registration_path, class:"dropdown-item"%>
+          </div>
+        </li>
+        <li class="nav-item">
+          <%= link_to search_index_path, class:"nav-link" do %>
+          <i class="fa fa-search"></i>
+        <%end%>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class:"nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Registration", new_user_registration_path , class:"nav-link"%>
+      </li>
+      <li class="nav-item">
+        <%= link_to search_index_path, class:"nav-link" do %>
+        <i class="fa fa-search"></i>
+      <%end%>
+    </li>
+  <% end %>
+</ul>
+</div>
+</nav>

@@ -1,0 +1,25 @@
+<div class="right-login">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "login-form"}) do |f| %>
+
+  <div class="field wrap-inputDevise">
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: "email", class:"inputDevise" %>
+  </div>
+
+  <div class="field wrap-inputDevise">
+    <%= f.password_field :password, autocomplete: 'current-password', placeholder: "password", class:"inputDevise" %>
+  </div>
+
+  <div class="field wrap-inputDevise">
+    <%= f.password_field :password_confirmation, autocomplete: 'current-password', placeholder: "confirm password", class:"inputDevise" %>
+  </div>
+
+  <div class="actions container-login-btn">
+    <%= f.submit t('.sign_up'), class:"login-btn" %>
+  </div>
+
+  <%= render 'devise/shared/links' %>
+
+<% end %>
+  <div class="login-background" style="background-image: url(/assets/logo-back.jpg);"></div>
+
+</div>

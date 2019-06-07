@@ -1,0 +1,29 @@
+<div class='game-card'>
+  <p class='text-center'>
+    <%= link_to guide_path(guide.id) do %>
+      <% guide.pictures.last(1).each do |x| %>
+      <img style='max-width: 100%;' src='<%= x.url %>' alt=''/>
+        <% end %>
+    <% end %>
+  </p>
+  <h4>
+    <%= link_to guide_path(guide.id) do %>
+      <%= guide.title %>
+    <% end %>
+  </h4>
+  <h5>
+    <%= guide.text %>
+  </h5>
+  <p>
+    <%= guide.text&.truncate(100) %>
+  </p>
+  <% if !local_assigns.has_key?(:hide_form) || !hide_form %>
+    <div class='row'>
+      <div class='col-md-6'>
+        <%= link_to guide_path(guide.id), class: 'btn btn-light' do %>
+          Read More
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

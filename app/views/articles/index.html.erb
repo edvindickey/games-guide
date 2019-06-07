@@ -1,0 +1,9 @@
+<% if @articles == [] %>
+  <br>Nothing
+<% else %>
+<div class='album'>
+  <div class='container'>
+<%= render @articles%>
+</div>
+</div>
+<% end %>

@@ -1,0 +1,26 @@
+<div class='article-card'>
+  <p class='text-center'>
+    <%= link_to article_path(article.id) do %>
+    <% article.pictures.last(1).each do |x| %>
+      <img style='max-width: 100%;' src='<%= x.url %>' alt=''/>
+    <% end %>
+  <% end %>
+</p>
+<h4>
+  <%= link_to article_path(article.id) do %>
+  <%= article.title %>
+<% end %>
+</h4>
+<p>
+<%= article.body&.truncate(100) %>
+</p>
+<% if !local_assigns.has_key?(:hide_form) || !hide_form %>
+<div class='row'>
+  <div class='col-md-6'>
+    <%= link_to article_path(article.id), class: 'btn btn-light' do %>
+    Read More
+  <% end %>
+</div>
+</div>
+<% end %>
+</div>
