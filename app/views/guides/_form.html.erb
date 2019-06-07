@@ -1,3 +1,4 @@
+<%= tinymce %>
 <div class="form-group">
   <%= f.text_field :title, class:"input", placeholder:"title",class:"form-control" %><br>
 </div>
@@ -13,7 +14,7 @@
 </div>
 
 <div class="form-group">
-  <%= f.text_area :text, class:"input", placeholder:"text",class:"form-control" %><br>
+  <%= f.text_area :text,:class => "tinymce", :rows => 10, :cols => 40 %><br>
 </div>
 
 <h3>Виберіть фото:</h3>
