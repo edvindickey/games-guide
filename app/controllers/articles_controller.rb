@@ -27,7 +27,9 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
-  def show; end
+  def show
+    @recommended_articles = Article.random.limit(6)
+  end
 
   def index
     @articles = Article.all

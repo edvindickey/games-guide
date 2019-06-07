@@ -1,3 +1,11 @@
-// Place all the styles related to the articles controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.album {
+  min-height: 50rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  background-color: #f7f7f7;
+}
+.article-card {
+  background-color: white;
+  margin-bottom: $grid-gutter-width / 2;
+  padding: $grid-gutter-width / 2;
+}

@@ -1,0 +1,9 @@
+<% articles.each_slice(4) do | articles_group | %>
+  <div class='row'>
+    <% articles_group.each do |article| %>
+      <div class='col-sm-6 col-xs-12'>
+        <%= render 'articles/article', article: article %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

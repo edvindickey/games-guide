@@ -5,7 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Category.create!(name: 'Lol')
+Category.create!(name: 'LOL')
 Category.create!(name: 'Dota 2')
 Category.create!(name: 'CS:GO')
 Category.create!(name: 'Fortnite')
+Category.create!(name: 'PUBG')
+Category.create!(name: 'COD')
