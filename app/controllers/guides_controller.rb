@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
-  before_action :find_guide, only: %i[show edit update]
+  before_action :find_guide, only: %i[show edit update destroy]
 
   def new
     @guide = Guide.new
@@ -8,7 +8,7 @@ class GuidesController < ApplicationController
   end
 
   def create
-   @categories=Category.find(params[:category_ids])
+    @categories=Category.find(params[:category_ids])
     @guide = current_user.guides.build(guide_params)
     if @guide.save
       @guide.categories = @categories

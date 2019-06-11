@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
-  before_action :find_article, only: %i[show edit update]
+  before_action :find_article, only: %i[show edit update destroy]
 
   def new
     @article = Article.new
