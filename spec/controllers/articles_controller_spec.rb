@@ -32,6 +32,7 @@ RSpec.describe ArticlesController, type: :controller do
      expect(response).to render_template :edit
   end
   end
+
   context 'PUT #update' do
   let!(:article) { create :article, user: user }
 

@@ -18,8 +18,15 @@ RSpec.describe CommentsController, type: :controller do
 #     user_id: subject.current_user.id,
 #     object_type: 'Article'
 #    }
-#    expect { post(:create, params: { comment: params }) }.to change(comment, :msg).by(1)
-  #  expect(flash[:notice]).to eq 'comment was successfully created.'
+#    expect { post(:create, params: { comment: params }) }.to change(Comment, :msg).by(1)
 #   end
 #  end
+
+#context 'DELETE #destroy' do
+#let!(:comment) { create :comment, user: user }
+
+#it 'should delete comment' do
+# expect { delete :destroy, params: { id: comment.id } }.to change(Comment, :count).by(-1)
+#end
+#end
 end
