@@ -6,7 +6,7 @@ class Article < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
-  validates :pictures, presence: true
+  #validates :pictures, presence: true
 
   mount_uploaders :pictures, PictureUploader
   serialize :pictures, JSON

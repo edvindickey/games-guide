@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :guide do
-    user_id {1}
     title {"a"}
     hero {"b"}
     text {"c"}

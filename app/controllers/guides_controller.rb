@@ -1,6 +1,6 @@
 class GuidesController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
-  before_action :find_guide, only: %i[show edit update]
+  before_action :find_guide, only: %i[show edit update destroy]
 
   def new
     @guide = Guide.new
