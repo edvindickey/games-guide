@@ -13,6 +13,14 @@ RSpec.describe CategoriesController, type: :controller do
         end
       end
     end
+    context 'GET #index' do
+      it 'should success and render to index page' do
+         get :index
+         expect(response).to have_http_status(200)
+         expect(response).to render_template :index
+      end
+     end
+
 
     it "shouldn't have a current_user" do
       expect(subject.current_user).to eq(nil)
