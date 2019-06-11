@@ -5,59 +5,55 @@ RSpec.describe ArticlesController, type: :controller do
 
   login_user
 
- it "should have a current_user" do
-  expect(subject.current_user).to_not eq(nil)
- end
-
-    let!(:article){ build(:article,user: user)}
-
- describe 'GET #new' do
-   it "should find user and open form for create article" do
-   get :new
-   expect(subject.current_user.email).to eq("x@x.x")
-   expect(subject.current_user.email).to_not eq(user.email)
-   expect(response).to have_http_status(200)
-  end
-  end
-
-#  describe 'GET #edit' do
-#    it "should find current_user and open form for edit article" do
-#    get :edit, params: {article_id: article.id}
-#    expect(subject.current_user.email).to eq("x@x.x")
-#    expect(subject.current_user.email).to_not eq(user.email)
-#    expect(response).to have_http_status(200)
-#   end
-#   end
-
-
-describe 'PATCH #update' do
-    before do
-     @article = create(:article, user_id: subject.current_user.id)
-   end
-    it 'should update article and redirect to article' do
-      patch :update, params: { id: subject.current_user.id, article: { title: 'a' } }
-    #  expect(subject.current_user.article.title).to eq('Lolka')
-      expect(response).to redirect_to article_path(@article.id)
-    end
-end
-
-
-  describe "GET #show" do
-   it "has a 200 status code" do
-   expect(response.status).to eq(200)
-  end
-
-  it "responds to html by default" do
-   expect(response.content_type)=="text/html"
-  end
- end
-
- context "without render_views" do
-   describe "GET index" do
-     it "renders the RSpec generated template" do
-       get :index
-       expect(response.body).to eq("")
+    context 'GET #index' do
+     it 'should success and render to index page' do
+        get :index
+        expect(response).to have_http_status(200)
+        expect(response).to render_template :index
      end
+    end
+
+    context 'GET #show' do
+   let!(:article) { create :article, user: user }
+
+    it 'should success and render to edit page' do
+       get :show, params: { id: article.id }
+       expect(response).to have_http_status(200)
+       expect(response).to render_template :show
+    end
+  end
+
+  context 'GET #edit' do
+  let!(:article) { create :article, user: user }
+
+  it 'should success and render to edit page' do
+     get :edit, params: { id: article.id }
+     expect(response).to have_http_status(200)
+     expect(response).to render_template :edit
+  end
+  end
+  context 'PUT #update' do
+  let!(:article) { create :article, user: user }
+
+  it 'should update article info' do
+   params = {
+    title: 'a',
+    body: 'c'
+   }
+
+   put :update, params: { id: article.id, article: params }
+   article.reload
+   params.keys.each do |key|
+    expect(article.attributes[key.to_s]).to eq params[key]
    end
- end
+  end
+  end
+
+  context 'DELETE #destroy' do
+  let!(:article) { create :article, user: user }
+
+  it 'should delete article' do
+   expect { delete :destroy, params: { id: article.id } }.to change(Article, :count).by(-1)
+  end
+  end
 end
