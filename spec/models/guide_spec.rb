@@ -1,19 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe Article, type: :model do
+RSpec.describe Guide, type: :model do
   let!(:user){
     create(:user)
   }
 
   subject{
-     build(:article)
+     build(:guide)
   }
 
   context "validation" do
 
     it { should validate_presence_of(:title) }
 
-    it { should validate_presence_of(:body) }
+    it { should validate_presence_of(:hero) }
+
+    it { should validate_presence_of(:text) }
 
     #it { should validate_presence_of(:pictures) }
 
@@ -26,9 +28,14 @@ RSpec.describe Article, type: :model do
        expect(subject).to_not be_valid
     end
 
-    it "should not be valid without body" do
-       subject.body = nil
+    it "should not be valid without hero" do
+       subject.hero = nil
        expect(subject).to_not be_valid
+    end
+
+    it "should not be valid without text" do
+      subject.text = nil
+      expect(subject).to_not be_valid
     end
   end
 
