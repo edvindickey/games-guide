@@ -5,6 +5,15 @@ RSpec.describe GuidesController, type: :controller do
 
   login_user
 
+  describe 'before actions' do
+    describe 'find_guide' do
+      it 'is expected to define before action' do
+        is_expected.to use_before_action(:find_guide)
+      end
+    end
+  end
+
+
     context 'GET #index' do
      it 'should success and render to index page' do
         get :index

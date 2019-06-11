@@ -2,6 +2,17 @@ require 'rails_helper'
 
 RSpec.describe CommentsController, type: :controller do
 
+
+  describe 'before actions' do
+    describe 'find_comment' do
+      it 'is expected to define before action' do
+        is_expected.to use_before_action(:find_comment)
+      end
+    end
+  end
+
+
+
 #  let!(:user){ build(:user, email: "test@test.com")}
 
 

@@ -5,6 +5,15 @@ RSpec.describe ArticlesController, type: :controller do
 
   login_user
 
+  describe 'before actions' do
+    describe 'find_article' do
+      it 'is expected to define before action' do
+        is_expected.to use_before_action(:find_article)
+      end
+    end
+  end
+
+
     context 'GET #index' do
      it 'should success and render to index page' do
         get :index
