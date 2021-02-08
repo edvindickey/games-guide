@@ -38,7 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 #authorization
 gem 'devise'
 #upload pictures
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 #search
 gem 'ransack'
 
